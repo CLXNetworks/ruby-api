@@ -3,7 +3,7 @@ require 'test_helper'
 class HTTPClientTest < MiniTest::Test
   
   def setup
-    http_adapter = CLX::HTTPAdapter.new
+    http_adapter = CLX::TestAdapter.new
     @client = CLX::HTTPClient.new 'http://some.url.org', http_adapter
   end
 

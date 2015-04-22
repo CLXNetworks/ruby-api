@@ -21,7 +21,54 @@ module CLX
       @username = username
       @password = password
     end
-    
+
+    # GET-request
+    # @param [String] url
+    #   Full URL to API resource
+    # @param [Mixed] params
+    #   String, Hash or Array
+    def get(url, params = nil)
+      #return execute('get', url, params)
+      raise NotImplementedError
+    end
+
+    # POST-request
+    #   (Not implemented)
+    # @param [String] url
+    #   Full URL to API resource
+    # @param [Hash] data
+    #   POST-data
+    # @param [Mixed] params
+    #   String, Hash or Array
+    def post(url, data, params = nil)
+      #return execute('post', url, data, params)
+      raise NotImplementedError
+    end
+
+    # PUT-request
+    #   (Not implemented)
+    # @param [String] url
+    #   Full URL to API resource
+    # @param [Hash] data
+    #   PUT-data
+    # @param [Mixed] params
+    #   String, Hash or Array
+    def put(url, data, params = nil)
+      #return execute('put', url, data, params)
+      raise NotImplementedError
+    end
+
+    # DELETE-request
+    #   (Not implemented)
+    # @param [String] url
+    #   Full URL to API resource
+    # @param [Mixed] params
+    #   String, Hash or Array
+    def delete(url, params = nil)
+      #return execute('delete', url, data?, params?)
+      raise NotImplementedError
+    end
+
   end
 
 end

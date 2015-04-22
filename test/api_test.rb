@@ -3,6 +3,7 @@ require 'test_helper'
 class APITest < MiniTest::Test
   
   def setup
+    http_adapter = CLX::TestAdapter.new
     @api = CLX::API.new 'username', 'password'
   end
   
@@ -26,6 +27,36 @@ class APITest < MiniTest::Test
   def test_initializer_with_too_many_arguments_raises_error
     assert_raises ArgumentError do
       CLX::API.new 'username', 'password', nil, 'one_argument_too_much'
+    end
+  end
+
+  def test_initializer_argument_username_not_string_raises_CLX_exception
+    assert_raises CLX::CLXException do
+      CLX::API.new 1, 'a_password'
+    end
+    
+    assert_raises CLX::CLXException do
+      @user = {username: 'a_username'}
+      CLX::API.new @user, 'a_password'
+    end
+    
+    assert_raises CLX::CLXException do
+      CLX::API.new nil, 'a_password'
+    end
+  end
+
+  def test_initializer_argument_password_not_string_raises_CLX_exception
+    assert_raises CLX::CLXException do
+      CLX::API.new 'a_username', 1
+    end
+    
+    assert_raises CLX::CLXException do
+      @password = {password: 'a_password'}
+      CLX::API.new 'a_username', @password
+    end
+    
+    assert_raises CLX::CLXException do
+      CLX::API.new 'a_username', nil
     end
   end
 
