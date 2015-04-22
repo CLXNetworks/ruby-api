@@ -5,7 +5,7 @@ require 'clx_api/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "clx_api"
-  spec.version       = ClxApi::VERSION
+  spec.version       = CLX::VERSION
   spec.authors       = ["Andreas Fridlund"]
   spec.email         = ["afrxx09@student.lnu.se"]
   spec.summary       = %q{CLX Networks API Gem.}
