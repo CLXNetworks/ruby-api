@@ -78,6 +78,14 @@ class HTTPAdapterTest < MiniTest::Test
 
   def test_http_method_get
 
+    assert_raises CLX::CLXException do
+      @http_adapter.get(123)
+    end
+
+    assert_raises CLX::CLXException do
+      @http_adapter.get('http://some.url', 123)
+    end
+
     assert_raises NotImplementedError do
       @http_adapter.get('http://some.url')
     end

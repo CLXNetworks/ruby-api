@@ -1,3 +1,5 @@
+require 'uri'
+
 module CLX
   
   #HTTP Adapter class for making RESTful HTTP-requests
@@ -28,6 +30,8 @@ module CLX
     # @param [Mixed] params
     #   String, Hash or Array
     def get(url, params = nil)
+      valid_url?(url)
+      valid_params?(params)
       #return execute('get', url, params)
       raise NotImplementedError
     end
@@ -69,6 +73,24 @@ module CLX
       raise NotImplementedError
     end
 
+
+    private
+
+      def valid_url?(url)
+        !!URI.parse(url)
+      rescue URI::InvalidURIError
+        raise CLXException, format('URL: "%s" is not a valid url', url)
+      end
+
+      def valid_params?(params)
+        if params != nil
+          if params.is_a?(String) || params.is_a?(Hash) || params.is_a?(Array)
+            return true
+          else
+            raise CLXException, 'params must be String, Hash or Array'
+          end
+        end
+      end
   end
 
 end
