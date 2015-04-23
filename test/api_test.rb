@@ -60,4 +60,18 @@ class APITest < MiniTest::Test
     end
   end
 
+  #Public setter methods
+  def test_setting_auth_credentials_works
+    adapter = @api.http_client.http_adapter
+    @api.set_auth('new_username', 'new_password')
+    assert_equal adapter.username, 'new_username'
+    assert_equal adapter.password, 'new_password'
+  end
+
+  def test_setting_base_url_works
+    client = @api.http_client
+    @api.set_base_url('http://new.url')
+    assert_equal client.base_url, 'http://new.url'
+  end
+
 end
