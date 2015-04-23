@@ -28,71 +28,64 @@ class HTTPAdapterTest < MiniTest::Test
     end
   end
 
-  def test_http_methods_with_wrong_number_of_arguments_throws_Argument_Error
-
-    # GET
+  # GET method
+  def test_http_method_with_no_arguments_raises_error
     assert_raises ArgumentError do
       @http_adapter.get()
     end
+  end
 
+  def test_http_method_get_with_too_many_arguments_raises_error
     assert_raises ArgumentError do
       @http_adapter.get('http://some.url', {query: 'value'}, 'too_many_arguments')
     end
-
-    # POST
-    assert_raises ArgumentError do
-      @http_adapter.post()
-    end
-
-    assert_raises ArgumentError do
-      @http_adapter.post('http://some.url')
-    end
-
-    assert_raises ArgumentError do
-      @http_adapter.post('http://some.url', {data: 1}, {query: 'value'}, 'too_many_arguments')
-    end
-
-    # PUT
-    assert_raises ArgumentError do
-      @http_adapter.put()
-    end
-
-    assert_raises ArgumentError do
-      @http_adapter.put('http://some.url')
-    end
-
-    assert_raises ArgumentError do
-      @http_adapter.put('http://some.url', {data: 1}, {query: 'value'}, 'too_many_arguments')
-    end
-
-    # DELETE
-    assert_raises ArgumentError do
-      @http_adapter.delete()
-    end
-
-    assert_raises ArgumentError do
-      @http_adapter.delete('http://some.url', {query: 'value'}, 'too_many_arguments')
-    end
-
   end
 
-  def test_http_method_get
-
+  def test_http_method_get_only_takes_valid_url_as_first_argument
     assert_raises CLX::CLXException do
       @http_adapter.get(123)
     end
 
     assert_raises CLX::CLXException do
+      @http_adapter.get('')
+    end
+
+    assert_raises CLX::CLXException do
+      @http_adapter.get({key: 'value'})
+    end
+  end
+
+  def test_http_method_get_only_accepts_hash_string_or_array_as_argument
+    assert_raises CLX::CLXException do
       @http_adapter.get('http://some.url', 123)
     end
 
+    assert_raises CLX::CLXException do
+      @http_adapter.get('http://some.url', 12.3)
+    end
+
+    assert_raises CLX::CLXException do
+      @http_adapter.get('http://some.url', Class.new)
+    end
+
+    assert_raises CLX::CLXException do
+      @http_adapter.get('http://some.url', Struct.new(:key))
+    end
+
+    assert_raises CLX::CLXException do
+      @http_adapter.get('http://some.url', OpenStruct.new)
+    end
+  end
+
+  def test_http_method_get_should_not_be_implemented_yet
     assert_raises NotImplementedError do
       @http_adapter.get('http://some.url')
     end
 
   end
 
-  def test_http_method_post
+  # POST
+  def test_http_method_post_should_not_be_implemented_yet
     
     assert_raises NotImplementedError do
       @http_adapter.post('http://some.url', {})
@@ -100,20 +93,67 @@ class HTTPAdapterTest < MiniTest::Test
 
   end
 
-  def test_http_method_put
+  def test_http_method_post_with_no_arguments_raises_error
+    assert_raises ArgumentError do
+      @http_adapter.post()
+    end
+  end
 
+  def test_http_method_post_without_data_argument_raises_error
+    assert_raises ArgumentError do
+      @http_adapter.post('http://some.url')
+    end
+  end
+
+  def test_http_method_post_with_too_many_arguments_raises_error
+    assert_raises ArgumentError do
+      @http_adapter.post('http://some.url', {data: 1}, {query: 'value'}, 'too_many_arguments')
+    end
+  end
+
+  # PUT
+  def test_http_method_put_should_not_be_implemented_yet
     assert_raises NotImplementedError do
       @http_adapter.put('http://some.url', {})
     end
 
   end
 
-  def test_http_method_delete
+  def test_http_method_put_with_no_arguments_should_raise_error
+    assert_raises ArgumentError do
+      @http_adapter.put()
+    end
+  end
 
+  def test_http_method_put_without_data_argument_should_raise_error
+    assert_raises ArgumentError do
+      @http_adapter.put('http://some.url')
+    end
+  end
+
+  def test_http_method_put_with_too_many_arguments_raises_error
+    assert_raises ArgumentError do
+      @http_adapter.put('http://some.url', {data: 1}, {query: 'value'}, 'too_many_arguments')
+    end
+  end
+
+  # DELETE
+  def test_http_method_delete_should_not_be_implemented_yet
     assert_raises NotImplementedError do
       @http_adapter.delete('http://some.url')
     end
+  end
 
+  def test_http_method_delete_without_argument_should_raise_error
+    assert_raises ArgumentError do
+      @http_adapter.delete()
+    end
+  end
+
+  def test_http_method_delete_with_too_many_arguments_should_raise_error
+    assert_raises ArgumentError do
+      @http_adapter.delete('http://some.url', {query: 'value'}, 'too_many_arguments')
+    end
   end
 
 end

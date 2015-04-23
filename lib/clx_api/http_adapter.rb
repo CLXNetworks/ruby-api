@@ -5,9 +5,11 @@ module CLX
   #HTTP Adapter class for making RESTful HTTP-requests
   class HTTPAdapter
 
+    # Contains the username used for Basic Auth requests
     # @!attribute [r]
     attr_reader :username
     
+    # Contains the password used for Basic Auth requests
     # @!attribute [r]
     attr_reader :password
 
@@ -29,6 +31,7 @@ module CLX
     #   Full URL to API resource
     # @param [Mixed] params
     #   String, Hash or Array
+    # @return [HTTP::Response]
     def get(url, params = nil)
       valid_url?(url)
       valid_params?(params)
@@ -44,6 +47,7 @@ module CLX
     #   POST-data
     # @param [Mixed] params
     #   String, Hash or Array
+    # @return [HTTP::Response]
     def post(url, data, params = nil)
       #return execute('post', url, data, params)
       raise NotImplementedError
@@ -57,6 +61,7 @@ module CLX
     #   PUT-data
     # @param [Mixed] params
     #   String, Hash or Array
+    # @return [HTTP::Response]
     def put(url, data, params = nil)
       #return execute('put', url, data, params)
       raise NotImplementedError
@@ -68,20 +73,32 @@ module CLX
     #   Full URL to API resource
     # @param [Mixed] params
     #   String, Hash or Array
+    # @return [HTTP::Response]
     def delete(url, params = nil)
       #return execute('delete', url, data?, params?)
       raise NotImplementedError
     end
 
 
+
     private
 
+      # Method for validating URL's
+      # @param [String] url
+      # @return [Boolean]
+      # @raise [CLXException]
       def valid_url?(url)
+        raise CLXException, 'url can not be an empty string' if url.to_s.strip.length == 0
+        # Seems to accept any string as a valid url, might need some work
         !!URI.parse(url)
-      rescue URI::InvalidURIError
-        raise CLXException, format('URL: "%s" is not a valid url', url)
+        rescue URI::InvalidURIError
+          raise CLXException, format('URL: "%s" is not a valid url', url)
       end
 
+      # Tries to validate that parameter argument is in the correct format: String, Array or Hash
+      # @param [Mixed] params
+      # @return [Boolean]
+      # @raise [CLXException]
       def valid_params?(params)
         if params != nil
           if params.is_a?(String) || params.is_a?(Hash) || params.is_a?(Array)
@@ -91,6 +108,7 @@ module CLX
           end
         end
       end
+
   end
 
 end

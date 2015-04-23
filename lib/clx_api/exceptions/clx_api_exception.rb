@@ -1,6 +1,6 @@
 module CLX
 
-  # CLX Generic Exception Class
+  # CLX Exception Class for API request errors
   class CLXAPIException < Exception
 
   end

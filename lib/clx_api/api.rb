@@ -10,7 +10,7 @@ module CLX
     # Initialize a new API client
     # @param [String] username
     # @param [String] password
-    # @param [HTTPClient] http_client
+    # @param [HTTPAdapter] http_adapter
     #   Used for testing
     # @return [CLX::API]
     # @example

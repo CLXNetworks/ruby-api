@@ -80,7 +80,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">lib/clx_api.rb<span class="defines">,<br />
-  lib/clx_api/api.rb,<br /> lib/clx_api/version.rb</span>
+  lib/clx_api/api.rb,<br /> lib/clx_api/version.rb,<br /> lib/clx_api/http_client.rb,<br /> lib/clx_api/http_adapter.rb,<br /> lib/clx_api/exceptions/clx_exception.rb,<br /> lib/clx_api/exceptions/clx_api_exception.rb</span>
 </dd>
   
 </dl>
@@ -103,7 +103,7 @@
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="CLX/API.html" title="CLX::API (class)">API</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="CLX/API.html" title="CLX::API (class)">API</a></span>, <span class='object_link'><a href="CLX/CLXAPIException.html" title="CLX::CLXAPIException (class)">CLXAPIException</a></span>, <span class='object_link'><a href="CLX/CLXException.html" title="CLX::CLXException (class)">CLXException</a></span>, <span class='object_link'><a href="CLX/HTTPAdapter.html" title="CLX::HTTPAdapter (class)">HTTPAdapter</a></span>, <span class='object_link'><a href="CLX/HTTPClient.html" title="CLX::HTTPClient (class)">HTTPClient</a></span>
     
   
 </p>
@@ -134,15 +134,169 @@
 
 
 
+  <h2>Class Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_url-class_method" title="base_url (class method)">+ (Object) <strong>base_url</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>REST server.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#paths-class_method" title="paths (class method)">+ (Object) <strong>paths</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>API paths hash.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
 
 
 
+
+
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="base_url-class_method">
+  
+    + (<tt>Object</tt>) <strong>base_url</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>REST server</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/clx_api.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_base_url'>base_url</span>
+  <span class='ivar'>@base_url</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="paths-class_method">
+  
+    + (<tt>Object</tt>) <strong>paths</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>API paths hash</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/clx_api.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_paths'>paths</span>
+  <span class='ivar'>@paths</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 
 </div>
 
     <div id="footer">
-  Generated on Wed Apr 22 13:15:16 2015 by
+  Generated on Thu Apr 23 12:50:26 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.1.5).
 </div>
