@@ -1,4 +1,5 @@
 require 'uri'
+require 'json'
 
 module CLX
   
@@ -48,6 +49,10 @@ module CLX
 
       # Execute request
       def execute(method, uri, data = nil)
+        return create_response(data.to_json, 201) if method == 'post'
+        return create_response(data.to_json, 200) if method == 'put'
+        return create_response('{}', 204) if method == 'delete'
+
         path = uri.path
         response = getTestReponse(path);
 

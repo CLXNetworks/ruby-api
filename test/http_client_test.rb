@@ -11,22 +11,46 @@ class HTTPClientTest < MiniTest::Test
     assert_instance_of CLX::HTTPClient, @client
   end
 
-  def test_get_with_operator_path_returns_array_of_open_struct_with_operators_content
+  def test_request_resource_list_returns_array_of_open_struct
     result = @client.get('/operator')
 
     assert_equal result.length, 2
     assert_equal result[0].id, 1
   end
 
-  def test_get_with_operator_id_1_path_returns_open_struct
+  def test_request_single_resource_returns_open_struct
     result = @client.get('/operator/1')
+    
     assert_equal result.id, 1
   end
 
-  def test_get_with_operator_id_that_doesn_not_exist_raises_clx_api_exception_404
+  def test_get_request_to_resource_that_does_not_exist_raises_clx_exception
     assert_raises CLX::CLXAPIException do
       result = @client.get('/operator/9999')
     end
+  end
+
+  def test_post_returns_data_hash_as_open_struct
+    data = {id: 1, key: 'value'}
+    result = @client.post('/post-path', data)
+
+    assert_equal data[:id], result.id
+    assert_equal data[:key], result.key
+  end
+
+  def test_put_returns_modified_data_hash_as_open_struct
+    data = {id: 1, key: 'value'}
+    data[:key] = 'new value'
+    result = @client.put('/put-path', data)
+
+    assert_equal data[:id], result.id
+    assert_equal data[:key], result.key
+  end
+
+  def test_delete_returns_empty_open_struct
+    result = @client.delete('/delete-path')
+
+    assert_empty result.to_h
   end
 
 end

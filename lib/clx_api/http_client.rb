@@ -38,10 +38,9 @@ module CLX
     # @param [Hash] data
     #   POST data
     def post(url, data = nil)
-      # uri = get_full_url(url)
-      # response = @http_adapter.post(uri, data)
-      # return parseResponse(response)
-      raise NotImplementedError
+      uri = get_full_url(url)
+      response = @http_adapter.post(uri, data)
+      return parseResponse(response)
     end
 
     # Make a PUT-request to specified API-path
@@ -51,10 +50,9 @@ module CLX
     # @param [Hash] data
     #   PUT-data
     def put(url, data = nil)
-      # uri = get_full_url(url)
-      # response = @http_adapter.put(uri, data)
-      # return parseResponse(response)
-      raise NotImplementedError
+      uri = get_full_url(url)
+      response = @http_adapter.put(uri, data)
+      return parseResponse(response)
     end
 
     # Make a DELETE-request to specified API-path
@@ -62,10 +60,9 @@ module CLX
     # @param [String] url
     #   API-path
     def delete(url)
-      # uri = get_full_url(url)
-      # response = @http_adapter.delete(uri)
-      # return parseResponse(response)
-      raise NotImplementedError
+      uri = get_full_url(url)
+      response = @http_adapter.delete(uri)
+      return parseResponse(response)
     end
 
     private

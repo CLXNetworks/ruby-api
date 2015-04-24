@@ -3,7 +3,8 @@ require 'test_helper'
 class HTTPAdapterTest < MiniTest::Test
   
   def setup
-    @base_url = 'https://httpbin.org'
+    @https_url = 'https://httpbin.org'
+    @http_url = 'http://httpbin.org'
     @http_adapter = CLX::HTTPAdapter.new
   end
 
@@ -29,16 +30,44 @@ class HTTPAdapterTest < MiniTest::Test
     end
   end
 
+  def test_basic_auth_via_https_get_returns_http_ok
+    @http_adapter.setAuth('user', 'pass')
+    uri = URI(@https_url + '/basic-auth/user/pass')
+    response = @http_adapter.get(uri)
+    assert_instance_of Net::HTTPOK, response
+  end
+
+  def test_basic_auth_via_http_get_returns_http_ok
+    @http_adapter.setAuth('user', 'pass')
+    uri = URI(@http_url + '/basic-auth/user/pass')
+    response = @http_adapter.get(uri)
+    assert_instance_of Net::HTTPOK, response
+  end
+
+  def test_basic_auth_with_incorrect_credentials_via_https_returns_http_unauthorized
+    @http_adapter.setAuth('wrong_username', 'wrong_password')
+    uri = URI(@https_url + '/basic-auth/user/passwd')
+    response = @http_adapter.get(uri)
+    assert_instance_of Net::HTTPUnauthorized, response
+  end
+
+  def test_basic_auth_with_incorrect_credentials_via_http_returns_http_unauthorized
+    @http_adapter.setAuth('wrong_username', 'wrong_password')
+    uri = URI(@http_url + '/basic-auth/user/passwd')
+    response = @http_adapter.get(uri)
+    assert_instance_of Net::HTTPUnauthorized, response
+  end
+
   # GET method
-  def test_http_method_with_no_arguments_raises_error
+  def test_get_with_no_arguments_raises_argument_error
     assert_raises ArgumentError do
       @http_adapter.get()
     end
   end
 
-  def test_http_method_get_with_too_many_arguments_raises_error
+  def test_get_with_too_many_arguments_raises_argument_error
     assert_raises ArgumentError do
-      uri = URI(@base_url + '/get')
+      uri = URI(@https_url + '/get')
       @http_adapter.get(uri, 'too_many_arguments')
     end
   end
@@ -57,85 +86,114 @@ class HTTPAdapterTest < MiniTest::Test
     end
   end
 
-  def test_get_request_with_valid_url_returns_http_ok
-    uri = URI(@base_url + '/get')
+  def test_https_get_request_with_valid_url_returns_http_ok
+    uri = URI(@https_url + '/get')
+    response = @http_adapter.get(uri)
+    assert_instance_of Net::HTTPOK, response
+  end
+
+  def test_http_get_request_with_valid_url_returns_http_ok
+    uri = URI(@http_url + '/get')
     response = @http_adapter.get(uri)
     assert_instance_of Net::HTTPOK, response
   end
 
   # POST
 
-  def test_http_method_post_with_no_arguments_raises_error
+  def test_post_with_no_arguments_raises_argument_error
     assert_raises ArgumentError do
       @http_adapter.post()
     end
   end
 
-  def test_http_method_post_without_data_argument_raises_error
+  def test_post_without_data_argument_raises_argument_error
     assert_raises ArgumentError do
-      uri = URI(@base_url)
+      uri = URI(@https_url)
       @http_adapter.post(uri)
     end
   end
 
-  def test_http_method_post_with_too_many_arguments_raises_error
+  def test_post_with_too_many_arguments_raises_argument_error
     assert_raises ArgumentError do
-      uri = URI(@base_url + '/post')
+      uri = URI(@https_url + '/post')
       @http_adapter.post(uri, {data: 1}, 'too_many_arguments')
     end
   end
 
-  def test_post_request_with_valid_url_returns_http_ok
-    uri = URI(@base_url + '/post')
+  def test_https_post_request_with_valid_url_returns_http_ok
+    uri = URI(@https_url + '/post')
     response = @http_adapter.post(uri, {data: 1})
-    assert_instance_of Net::HTTPOK, response
+    response_types = [Net::HTTPOK, Net::HTTPCreated]
+    assert_includes response_types, response.class
+  end
+
+  def test_http_post_request_with_valid_url_returns_http_ok
+    uri = URI(@http_url + '/post')
+    response = @http_adapter.post(uri, {data: 1})
+    response_types = [Net::HTTPOK, Net::HTTPCreated]
+    assert_includes response_types, response.class
   end
 
   # PUT
 
-  def test_http_method_put_with_no_arguments_should_raise_error
+  def test_put_with_no_arguments_should_raise_argument_error
     assert_raises ArgumentError do
       @http_adapter.put()
     end
   end
 
-  def test_http_method_put_without_data_argument_should_raise_error
+  def test_put_without_data_argument_should_raise_argument_error
     assert_raises ArgumentError do
-      uri = URI(@base_url + '/put')
+      uri = URI(@https_url + '/put')
       @http_adapter.put(uri)
     end
   end
 
-  def test_http_method_put_with_too_many_arguments_raises_error
+  def test_put_with_too_many_arguments_raises_argument_error
     assert_raises ArgumentError do
-      uri = URI(@base_url + '/put')
+      uri = URI(@https_url + '/put')
       @http_adapter.put(uri, {data: 1}, 'too_many_arguments')
     end
   end
 
-  def test_put_request_with_valid_url_returns_http_ok
-    uri = URI(@base_url + '/put')
+  def test_https_put_request_with_valid_url_returns_http_ok
+    uri = URI(@https_url + '/put')
+    response = @http_adapter.put(uri, {data: 1})
+    assert_instance_of Net::HTTPOK, response
+  end
+
+  def test_http_put_request_with_valid_url_returns_http_ok
+    uri = URI(@http_url + '/put')
     response = @http_adapter.put(uri, {data: 1})
     assert_instance_of Net::HTTPOK, response
   end
 
   # DELETE
-  def test_http_method_delete_without_argument_should_raise_error
+  def test_delete_without_argument_should_raise_argument_error
     assert_raises ArgumentError do
       @http_adapter.delete()
     end
   end
 
-  def test_http_method_delete_with_too_many_arguments_should_raise_error
+  def test_delete_with_too_many_arguments_should_raise_argument_error
     assert_raises ArgumentError do
-      uri = URI(@base_url + '/delete')
+      uri = URI(@https_url + '/delete')
       @http_adapter.delete(uri, 'too_many_arguments')
     end
   end
-  def test_delete_request_with_valid_url_returns_http_ok
-    uri = URI(@base_url + '/delete')
+  
+  def test_https_delete_request_with_valid_url_returns_http_ok
+    uri = URI(@https_url + '/delete')
     response = @http_adapter.delete(uri)
-    assert_instance_of Net::HTTPOK, response
+    response_types = [Net::HTTPOK, Net::HTTPNoContent]
+    assert_includes response_types, response.class
+  end
+
+  def test_http_delete_request_with_valid_url_returns_http_ok
+    uri = URI(@http_url + '/delete')
+    response = @http_adapter.delete(uri)
+    response_types = [Net::HTTPOK, Net::HTTPNoContent]
+    assert_includes response_types, response.class
   end
 
   # Manipulated adapter
@@ -145,7 +203,7 @@ class HTTPAdapterTest < MiniTest::Test
     end
 
     assert_raises CLX::CLXException do
-      uri = URI(@base_url + '/get')
+      uri = URI(@https_url + '/get')
       response = @http_adapter.fake_method(uri)
     end
 
