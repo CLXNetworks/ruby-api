@@ -119,17 +119,17 @@ module CLX
           raise CLXException, 'Unable to parse JSON response'
         end
 
-        if(reponse.code > 399)
-          raise CLXAPIException(result.error.message, result.error.code), '400: Bad request' if response.code == 400
-          raise CLXAPIException(result.error.message, result.error.code), '401: Unauthorized' if response.code == 401
-          raise CLXAPIException(result.error.message, result.error.code), '403: Forbidden' if response.code == 403
-          raise CLXAPIException(result.error.message, result.error.code), '404: Not Found' if response.code == 404
-          raise CLXAPIException, "500: Unknown error"
+        if(response.code > 399)
+          raise CLXAPIException.new(result.error.message, result.error.code), '400: Bad request' if response.code == 400
+          raise CLXAPIException.new(result.error.message, result.error.code), '401: Unauthorized' if response.code == 401
+          raise CLXAPIException.new(result.error.message, result.error.code), '403: Forbidden' if response.code == 403
+          raise CLXAPIException.new(result.error.message, result.error.code), '404: Not Found' if response.code == 404
+          raise CLXAPIException.new(result.error.message, result.error.code), 'Unknown error'
         end
 
         return result
       end
-      
+
       # Encodes passed mixed variable to a URL-encoded query string
       # @param [Mixed] params
       #   String, Hash or Array
