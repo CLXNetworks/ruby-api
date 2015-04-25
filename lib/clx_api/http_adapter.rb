@@ -16,7 +16,7 @@ module CLX
     # Set credentials for basic auth
     # @param [String] username
     # @param [String] password
-    def setAuth(username, password)
+    def set_auth(username, password)
       raise CLXException, 'Username must be a string' unless username.is_a? String
       raise CLXException, 'Password must be a string' unless password.is_a? String
       raise CLXException, 'Username can not be an empty string' unless username.length > 0
@@ -69,9 +69,9 @@ module CLX
 
       # Execute request
       # @param [String] method
-      # @param [String] url
+      # @param [String] uri
       #   Full API-path
-      # @data [Hash] data
+      # @param [Hash] data
       # @return [HTTP::Response] result
       # @raise [CLXException] if he request fails
       def execute(method, uri, data = nil)

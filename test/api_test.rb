@@ -4,7 +4,7 @@ class APITest < MiniTest::Test
   
   def setup
     http_adapter = CLX::TestAdapter.new
-    @api = CLX::API.new 'username', 'password'
+    @api = CLX::API.new 'username', 'password', http_adapter
   end
   
   # Initializer 
@@ -72,6 +72,47 @@ class APITest < MiniTest::Test
     client = @api.http_client
     @api.set_base_url('http://new.url')
     assert_equal client.base_url, 'http://new.url'
+  end
+
+  # Get Operators test
+  def test_get_operators_returns_list_of_operators
+    result = @api.get_operators
+    
+    refute_nil result
+    refute_empty result
+  end
+
+  def test_get_operators_with_invalid_username_and_password_raises_CLX_exception
+    @api.set_auth('wrong_username', 'wrong_password')
+    assert_raises CLX::CLXAPIException do
+      result = @api.get_operators
+    end
+  end
+
+  #Get operator by id test
+  def test_get_operator_by_id_returns_single_operator
+    operator = @api.get_operator_by_id(1)
+
+    assert_equal operator.id, 1
+  end
+
+  def test_get_operator_by_id_with_non_existing_id_raises_CLX_exception_with_status_code_404
+    err = assert_raises CLX::CLXAPIException do
+      operator = @api.get_operator_by_id(9999)
+    end
+  end
+
+  def test_get_operator_by_id_with_non_integer_parameter_raises_CLX_exception
+    assert_raises CLX::CLXException do
+      operator = @api.get_operator_by_id('asd')
+    end
+  end
+
+  def test_get_operator_by_id_with_invalid_username_and_password_raises_CLX_exception
+    @api.set_auth('wrong_username', 'wrong_password')
+    assert_raises CLX::CLXAPIException do
+      result = @api.get_operator_by_id(1)
+    end
   end
 
 end

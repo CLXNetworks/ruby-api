@@ -4,6 +4,7 @@ class HTTPClientTest < MiniTest::Test
   
   def setup
     http_adapter = CLX::TestAdapter.new
+    http_adapter.set_auth('username', 'password')
     @client = CLX::HTTPClient.new 'http://some.url.org', http_adapter
   end
 
@@ -12,7 +13,7 @@ class HTTPClientTest < MiniTest::Test
   end
 
   def test_request_resource_list_returns_array_of_open_struct
-    result = @client.get('/operator')
+    result = @client.get('/operator/')
 
     assert_equal result.length, 2
     assert_equal result[0].id, 1
@@ -51,6 +52,22 @@ class HTTPClientTest < MiniTest::Test
     result = @client.delete('/delete-path')
 
     assert_empty result.to_h
+  end
+
+  def test_parser_with_invalid_json_raises_clx_exception
+    assert_raises CLX::CLXException do
+      @client.get('/invalid-json-response')
+    end
+  end
+
+  def test_unknown_http_status_code_error_raises_clx_exception
+    assert_raises CLX::CLXAPIException do
+      @client.get('/invalid-unknown-http-code-with-error')
+    end
+
+    assert_raises CLX::CLXAPIException do
+      @client.get('/invalid-unknown-http-code-without-error')
+    end
   end
 
 end

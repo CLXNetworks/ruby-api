@@ -10,8 +10,8 @@ module CLX
     attr_reader :clx_error_message
 
     # Initialize CLX Exception
-    # @param [Integer] http_status_code
-    # @param [Mixed] clx_respone_error
+    # @param [String] clx_error_message
+    # @param [Integer] clx_error_code
     # @example
     #   response = http_adapter.get('operator/99999999') #results in error from api
     #   raise CLXException(response.code, response.body), ""

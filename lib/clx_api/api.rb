@@ -17,7 +17,7 @@ module CLX
     #   CLX::API.new 'my_username', 'my_password'
     def initialize(username, password, http_adapter = nil)
       http_adapter = http_adapter.nil? ? HTTPAdapter.new : http_adapter
-      http_adapter.setAuth(username, password)
+      http_adapter.set_auth(username, password)
 
       @http_client = HTTPClient.new(CLX::base_url, http_adapter)
     end
@@ -26,7 +26,7 @@ module CLX
     # @param [String] username
     # @param [String] password
     def set_auth(username, password)
-      @http_client.http_adapter.setAuth(username, password)
+      @http_client.http_adapter.set_auth(username, password)
     end
 
     # Enables change of base URL after initialization
