@@ -76,6 +76,15 @@ class APITest < MiniTest::Test
 
   # Get Operators test
   def test_get_operators_returns_list_of_operators
+    response = OpenStruct.new(
+      body: '[
+        {"id":1,"name":"Foo","network":"Foonetwork","uniqueName":"Foo uniquq","isoCountryCode":"8","operationalState":"active","operationalStatDate":"-0001-11-30 00:00:00","numberOfSubscribers":0},
+        {"id":1058,"name":"Bar mobile","network":"Bar Mobile","uniqueName":"Foo Mobile-unique","isoCountryCode":"8","operationalState":"active","operationalStatDate":"-0001-11-30 00:00:00","numberOfSubscribers":0}
+      ]',
+      code: 200
+    )
+    @api.http_client.http_adapter.response = response
+
     result = @api.get_operators
     
     refute_nil result
@@ -84,6 +93,12 @@ class APITest < MiniTest::Test
 
   def test_get_operators_with_invalid_username_and_password_raises_CLX_exception
     @api.set_auth('wrong_username', 'wrong_password')
+    response = OpenStruct.new(
+      body: '{}',
+      code: 401
+    )
+    @api.http_client.http_adapter.response = response
+
     assert_raises CLX::CLXAPIException do
       result = @api.get_operators
     end
@@ -91,12 +106,24 @@ class APITest < MiniTest::Test
 
   #Get operator by id test
   def test_get_operator_by_id_returns_single_operator
+    response = OpenStruct.new(
+      body: '{"id":1,"name":"Foo","network":"Foonetwork","uniqueName":"Foo uniquq","isoCountryCode":"8","operationalState":"active","operationalStatDate":"-0001-11-30 00:00:00","numberOfSubscribers":0}',
+      code: 200
+    )
+    @api.http_client.http_adapter.response = response
+
     operator = @api.get_operator_by_id(1)
 
     assert_equal operator.id, 1
   end
 
   def test_get_operator_by_id_with_non_existing_id_raises_CLX_exception_with_status_code_404
+    response = OpenStruct.new(
+      body: '{"error":{"message": "No operator with id: 9999", "code": 3001}}',
+      code: 404
+    )
+    @api.http_client.http_adapter.response = response
+
     err = assert_raises CLX::CLXAPIException do
       operator = @api.get_operator_by_id(9999)
     end
@@ -110,6 +137,11 @@ class APITest < MiniTest::Test
 
   def test_get_operator_by_id_with_invalid_username_and_password_raises_CLX_exception
     @api.set_auth('wrong_username', 'wrong_password')
+    response = OpenStruct.new(
+      body: '{}',
+      code: 401
+    )
+    @api.http_client.http_adapter.response = response
     assert_raises CLX::CLXAPIException do
       result = @api.get_operator_by_id(1)
     end

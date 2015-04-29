@@ -57,7 +57,7 @@ module CLX
       raise CLXException, 'Operator id must be integer' unless id.is_a? Integer
       raise CLXException, 'Operator id must be greater than zero' unless id > 0
       
-      url = CLX.paths[:operator] + id.to_s
+      url = CLX.paths[:operator] + '/' + id.to_s
       @http_client.get(url)
     end
 

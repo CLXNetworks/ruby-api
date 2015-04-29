@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'json'
 SimpleCov.start
 
 require 'clx_api'

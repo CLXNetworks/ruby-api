@@ -25,8 +25,8 @@ module CLX
     # API paths hash
     def paths
       @paths ||= {
-        operator: '/operator/',
-        gateway: '/gateway/'
+        operator: '/operator',
+        gateway: '/gateway'
       }
     end
 
