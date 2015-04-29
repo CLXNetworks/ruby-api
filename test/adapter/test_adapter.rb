@@ -56,70 +56,11 @@ module CLX
 
       # Execute request
       def execute(method, uri, data = nil)
-        
+
         @request_url = uri.to_s
         @request_method = method.upcase
         return @response
-
-        #######################
-        # Moves to test classes
-        #######################
-        # return create_response('{}', 401) if @username != 'username' && @password != 'password'
-        # return create_response(data.to_json, 201) if method == 'post'
-        # return create_response(data.to_json, 200) if method == 'put'
-        # return create_response('{}', 204) if method == 'delete'
-
-        # path = uri.path
-        # path = (path[0..3] == '/api') ? path[4..-1] : path
-        # response = getTestReponse(path);
-
-        # return response
       end
-
-      #######################
-      # Moves to test classes
-      #######################
-      # # Get fake response object from url
-      # def getTestReponse(path)
-      #   return getFakeOperators if path == '/operator/'
-      #   return getFakeOperator if path == '/operator/1'
-      #   return getOperatorNotFound if path == '/operator/9999'
-      #   return create_response('{not_valid_json \not :at all', 200) if path == '/invalid-json-response'
-      #   return create_response('{"message": "strage error", "code": 1234}', 410) if path == '/invalid-unknown-http-code-with-error'
-      #   return create_response('{}', 410) if path == '/invalid-unknown-http-code-without-error'
-      # end
-
-      # # fake operator list
-      # def getFakeOperators
-      #   body = '[
-      #     {"id":1,"name":"Foo","network":"Foonetwork","uniqueName":"Foo uniquq","isoCountryCode":"8","operationalState":"active","operationalStatDate":"-0001-11-30 00:00:00","numberOfSubscribers":0},
-      #     {"id":1058,"name":"Bar mobile","network":"Bar Mobile","uniqueName":"Foo Mobile-unique","isoCountryCode":"8","operationalState":"active","operationalStatDate":"-0001-11-30 00:00:00","numberOfSubscribers":0}
-      #   ]'
-      #   code = 200
-      #   return create_response(body, code)
-      # end
-
-      # # fake operator
-      # def getFakeOperator
-      #   body = '{"id":1,"name":"Foo","network":"Foonetwork","uniqueName":"Foo uniquq","isoCountryCode":"8","operationalState":"active","operationalStatDate":"-0001-11-30 00:00:00","numberOfSubscribers":0}';
-      #   code = 200
-      #   return create_response(body, code)
-      # end
-
-      # # fake operator by id with invalid id
-      # def getOperatorNotFound
-      #   body = '{"error":{"message": "No operator with id: 9999", "code": 3001}}'
-      #   code = 404
-      #   return create_response(body, code)
-      # end
-
-      # def create_response(body, code)
-      #   response = {
-      #     body: body,
-      #     code: code
-      #   }
-      #   return OpenStruct.new(response)
-      # end
 
   end
 

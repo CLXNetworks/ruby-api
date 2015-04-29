@@ -135,7 +135,6 @@ class HTTPAdapterTest < MiniTest::Test
   end
 
   # PUT
-
   def test_put_with_no_arguments_should_raise_argument_error
     assert_raises ArgumentError do
       @http_adapter.put()

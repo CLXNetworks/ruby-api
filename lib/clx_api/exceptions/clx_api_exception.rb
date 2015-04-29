@@ -14,7 +14,7 @@ module CLX
     # @param [Integer] clx_error_code
     # @example
     #   response = http_adapter.get('operator/99999999') #results in error from api
-    #   raise CLXException(response.code, response.body), ""
+    #   raise CLXException(response.error.message, response.error.body), ""
     def initialize(clx_error_message = nil, clx_error_code = nil)
       @clx_error_message = clx_error_message
       @clx_error_code = clx_error_code
