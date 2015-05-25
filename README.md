@@ -24,13 +24,13 @@ Or install it yourself as:
 
 ## For Developers
 ### Set up environment
-1. Clone or download and unzip to local folder
-2. Navigate to folder in console/terminal
+
+Clone or download and unzip to local folder
+Navigate to folder in console/terminal
 
     $ cd [your_development_folder]/ruby_api
 
-3. Install development dependencies
-
+Install development dependencies
 
     $ bundle install
     
