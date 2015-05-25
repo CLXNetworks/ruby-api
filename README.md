@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-[See examples folder](https://github.com/CLXNetworks/ruby-api/examples)
+[See examples folder](https://github.com/CLXNetworks/ruby-api/tree/master/examples)
 
 ## For Developers
 ### Set up environment
