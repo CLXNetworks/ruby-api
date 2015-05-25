@@ -160,7 +160,55 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_operator_by_id-instance_method" title="#get_operator_by_id (instance method)">- (hash) <strong>get_operator_by_id</strong>(id) </a>
+      <a href="#get_gateway_by_id-instance_method" title="#get_gateway_by_id (instance method)">- (hash) <strong>get_gateway_by_id</strong>(gateway_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get one gateway based on it&#39;s gateway id.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_gateways-instance_method" title="#get_gateways (instance method)">- (hash) <strong>get_gateways</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get all gateways.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_operator_by_id-instance_method" title="#get_operator_by_id (instance method)">- (hash) <strong>get_operator_by_id</strong>(operator_id) </a>
     
 
     
@@ -200,6 +248,78 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Get all operators from the API.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_price_entires_by_gateway_id-instance_method" title="#get_price_entires_by_gateway_id (instance method)">- (hash) <strong>get_price_entires_by_gateway_id</strong>(gateway_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get price entires based on gateway id.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_price_entries_by_gateway_id_and_operator_id-instance_method" title="#get_price_entries_by_gateway_id_and_operator_id (instance method)">- (hash) <strong>get_price_entries_by_gateway_id_and_operator_id</strong>(gateway_id, operator_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get price entiry based on gateway id and operator id.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_price_entries_by_gateway_id_and_operator_id_and_date-instance_method" title="#get_price_entries_by_gateway_id_and_operator_id_and_date (instance method)">- (hash) <strong>get_price_entries_by_gateway_id_and_operator_id_and_date</strong>(gateway_id, operator_id, date) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get price entiry based on gateway id, operator id and a date.</p>
 </div></span>
   
 </li>
@@ -274,6 +394,54 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Enables change of base URL after initialization.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#valid_date%3F-instance_method" title="#valid_date? (instance method)">- (Boolean) <strong>valid_date?</strong>(date) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Validates that date is of type DateTime.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#valid_id%3F-instance_method" title="#valid_id? (instance method)">- (Boolean) <strong>valid_id?</strong>(id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Validates that in is of type integer and is grater than zero.</p>
 </div></span>
   
 </li>
@@ -440,9 +608,153 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="get_operator_by_id-instance_method">
+  <h3 class="signature first" id="get_gateway_by_id-instance_method">
   
-    - (<tt>hash</tt>) <strong>get_operator_by_id</strong>(id) 
+    - (<tt>hash</tt>) <strong>get_gateway_by_id</strong>(gateway_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get one gateway based on it&#39;s gateway id</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>gateway_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Gateway ID</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>gateway One operators as hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/clx_api/api.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_gateway_by_id'>get_gateway_by_id</span><span class='lparen'>(</span><span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_valid_id?'>valid_id?</span><span class='lparen'>(</span><span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>CLX</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span><span class='lbracket'>[</span><span class='symbol'>:gateway</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='ivar'>@http_client</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_gateways-instance_method">
+  
+    - (<tt>hash</tt>) <strong>get_gateways</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get all gateways</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>gateways list of gateways as hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/clx_api/api.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_gateways'>get_gateways</span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>CLX</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span><span class='lbracket'>[</span><span class='symbol'>:gateway</span><span class='rbracket'>]</span>
+  <span class='ivar'>@http_client</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_operator_by_id-instance_method">
+  
+    - (<tt>hash</tt>) <strong>get_operator_by_id</strong>(operator_id) 
   
 
   
@@ -471,7 +783,7 @@
   
     <li>
       
-        <span class='name'>id</span>
+        <span class='name'>operator_id</span>
       
       
         <span class='type'>(<tt>Integer</tt>)</span>
@@ -499,21 +811,8 @@
       
         &mdash;
         <div class='inline'>
-<p>operator One operator hash.</p>
+<p>operator One operator as hash.</p>
 </div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Raises:</p>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="CLXException.html" title="CLX::CLXException (class)">CLXException</a></span></tt>)</span>
-      
-      
       
     </li>
   
@@ -529,18 +828,14 @@
 57
 58
 59
-60
-61
-62</pre>
+60</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/clx_api/api.rb', line 56</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_operator_by_id'>get_operator_by_id</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>CLXException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Operator id must be integer</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Integer</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>CLXException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Operator id must be greater than zero</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_id'>id</span> <span class='op'>&gt;</span> <span class='int'>0</span>
-  
-  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>CLX</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span><span class='lbracket'>[</span><span class='symbol'>:operator</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_operator_by_id'>get_operator_by_id</span><span class='lparen'>(</span><span class='id identifier rubyid_operator_id'>operator_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_valid_id?'>valid_id?</span><span class='lparen'>(</span><span class='id identifier rubyid_operator_id'>operator_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>CLX</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span><span class='lbracket'>[</span><span class='symbol'>:operator</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_operator_id'>operator_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='ivar'>@http_client</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -588,7 +883,7 @@
       
         &mdash;
         <div class='inline'>
-<p>operators list of operators in hash.</p>
+<p>operators list of operators as hash.</p>
 </div>
       
     </li>
@@ -611,6 +906,311 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_operators'>get_operators</span>
   <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>CLX</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span><span class='lbracket'>[</span><span class='symbol'>:operator</span><span class='rbracket'>]</span>
+  <span class='ivar'>@http_client</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_price_entires_by_gateway_id-instance_method">
+  
+    - (<tt>hash</tt>) <strong>get_price_entires_by_gateway_id</strong>(gateway_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get price entires based on gateway id</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>gateway_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Gateway ID</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>price_entires list of price entries as hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/clx_api/api.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_price_entires_by_gateway_id'>get_price_entires_by_gateway_id</span><span class='lparen'>(</span><span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_valid_id?'>valid_id?</span><span class='lparen'>(</span><span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>CLX</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span><span class='lbracket'>[</span><span class='symbol'>:gateway</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/price</span><span class='tstring_end'>&#39;</span></span>
+  <span class='ivar'>@http_client</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_price_entries_by_gateway_id_and_operator_id-instance_method">
+  
+    - (<tt>hash</tt>) <strong>get_price_entries_by_gateway_id_and_operator_id</strong>(gateway_id, operator_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get price entiry based on gateway id and operator id</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>gateway_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Gateway ID</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>operator_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Operator ID</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>price_entry one price entry as hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/clx_api/api.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_price_entries_by_gateway_id_and_operator_id'>get_price_entries_by_gateway_id_and_operator_id</span><span class='lparen'>(</span><span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='comma'>,</span> <span class='id identifier rubyid_operator_id'>operator_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_valid_id?'>valid_id?</span><span class='lparen'>(</span><span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_valid_id?'>valid_id?</span><span class='lparen'>(</span><span class='id identifier rubyid_operator_id'>operator_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>CLX</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span><span class='lbracket'>[</span><span class='symbol'>:gateway</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/price/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_operator_id'>operator_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='ivar'>@http_client</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_price_entries_by_gateway_id_and_operator_id_and_date-instance_method">
+  
+    - (<tt>hash</tt>) <strong>get_price_entries_by_gateway_id_and_operator_id_and_date</strong>(gateway_id, operator_id, date) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get price entiry based on gateway id, operator id and a date</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>gateway_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Gateway ID</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>operator_id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Operator ID</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>date</span>
+      
+      
+        <span class='type'>(<tt>DateTime</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>DateTime</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>price_entry one price entry as hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110
+111
+112
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/clx_api/api.rb', line 108</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_price_entries_by_gateway_id_and_operator_id_and_date'>get_price_entries_by_gateway_id_and_operator_id_and_date</span><span class='lparen'>(</span><span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='comma'>,</span> <span class='id identifier rubyid_operator_id'>operator_id</span><span class='comma'>,</span> <span class='id identifier rubyid_date'>date</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_valid_id?'>valid_id?</span><span class='lparen'>(</span><span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_valid_id?'>valid_id?</span><span class='lparen'>(</span><span class='id identifier rubyid_operator_id'>operator_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_valid_date?'>valid_date?</span><span class='lparen'>(</span><span class='id identifier rubyid_date'>date</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_date_query'>date_query</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>?date=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_date'>date</span><span class='period'>.</span><span class='id identifier rubyid_year'>year</span><span class='embexpr_end'>}</span><span class='tstring_content'>-</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_date'>date</span><span class='period'>.</span><span class='id identifier rubyid_month'>month</span><span class='embexpr_end'>}</span><span class='tstring_content'>-</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_date'>date</span><span class='period'>.</span><span class='id identifier rubyid_day'>day</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>CLX</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span><span class='lbracket'>[</span><span class='symbol'>:gateway</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_gateway_id'>gateway_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/price/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_operator_id'>operator_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_date_query'>date_query</span>
   <span class='ivar'>@http_client</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -741,12 +1341,148 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="valid_date?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>valid_date?</strong>(date)  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Validates that date is of type DateTime</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="CLXException.html" title="CLX::CLXException (class)">CLXException</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+126
+127
+128</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/clx_api/api.rb', line 126</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_valid_date?'>valid_date?</span><span class='lparen'>(</span><span class='id identifier rubyid_date'>date</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>CLXException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Date must be of type DateTime</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_date'>date</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>DateTime</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="valid_id?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>valid_id?</strong>(id)  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Validates that in is of type integer and is grater than zero</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="CLXException.html" title="CLX::CLXException (class)">CLXException</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122
+123</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/clx_api/api.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_valid_id?'>valid_id?</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>CLXException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Id must be integer</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Integer</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>CLXException</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Id must be greater than zero</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_id'>id</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Wed Apr 29 14:44:37 2015 by
+  Generated on Mon May 25 12:34:50 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.1.5).
 </div>
