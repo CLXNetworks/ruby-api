@@ -27,22 +27,22 @@ Or install it yourself as:
 1. Clone or download and unzip to local folder
 2. Navigate to folder in console/terminal
 
-
     $ cd [your_development_folder]/ruby_api
+
 3. Install development dependencies
 
 
-  $ bundle install
+    $ bundle install
     
 ### Runing tests
 [Minitest](https://github.com/seattlerb/minitest) is used for unit testing.
 
-  $ bundle exec rake test
+    $ bundle exec rake test
 
 ### Generate documentation
 [Yard](https://github.com/lsegal/yard) generates documentation from comments in the code
 
-  $ bundle exec yard doc
+    $ bundle exec yard doc
     
 ### Code coverage
 [SimpleCov](https://github.com/colszowka/simplecov) checks test coverage automatically when tests are run
