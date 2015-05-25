@@ -88,7 +88,7 @@ module CLX
           raise CLXException, 'Unable to parse JSON response'
         end
 
-        if(response.code > 399)
+        if(response.code.to_i > 399)
           error_message = (result.error && result.error.message) ? result.error.message : 'No error message available'
           code = (result.error && result.error.code) ? result.error.code : 'No error code available'
           raise CLXAPIException.new(error_message, code), '400: Bad request' if response.code == 400
