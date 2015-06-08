@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["afrxx09@student.lnu.se"]
   spec.summary       = %q{CLX Networks API Gem.}
   spec.description   = %q{Ruby Gem for CLX Networks API.}
-  spec.homepage      = ""
+  spec.homepage      = "https://clxnetworks.com/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.5.1"
+  spec.add_development_dependency "minitest", "~> 5.5"
   spec.add_development_dependency "yard", "~> 0.8.7.6"
   spec.add_development_dependency "simplecov", "~> 0.10.0"
 end
